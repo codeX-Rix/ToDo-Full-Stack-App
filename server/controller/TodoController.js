@@ -6,9 +6,9 @@ module.exports.getToDos = async (req, res) => {
 };
 
 module.exports.saveToDo = (req, res) => {
-  const { toDo } = req.body;
+  const { todo } = req.body;
 
-  TodoModel.create({ toDo })
+  TodoModel.create({ todo })
     .then((data) => {
       console.log("Saved Succsesfully...!");
       res.status(201).send(data);
@@ -21,9 +21,8 @@ module.exports.saveToDo = (req, res) => {
 
 module.exports.updateToDo = (req, res) => {
   const { id } = req.params;
-  const { toDo } = req.body;
-  console.log(id)
-  TodoModel.findByIdAndUpdate(id, { toDo })
+  const { todo } = req.body;
+  TodoModel.findByIdAndUpdate(id, { todo })
     .then(() => {
       res.send("Update Successfully...");
     })
